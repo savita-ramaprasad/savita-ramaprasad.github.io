@@ -4,4 +4,5 @@ title: Projects
 permalink: /projects/
 ---
 
-Projects from data science challenges and Kaggle coming up!
+[Conversion Rate]({{ site.baseurl }}{%link projects/ch1.html %})  
+[Spanish translation on website: A/B testing]({{ site.baseurl }}{%link projects/ch2.html %})
