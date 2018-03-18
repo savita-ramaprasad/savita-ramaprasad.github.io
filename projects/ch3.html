@@ -136,9 +136,46 @@ retention &lt;- fread( &quot;~/Google Drive/take_home_challenge/challenge_3/empl
 retention[ , quit_date := as.Date(quit_date)  ]
 retention[ , join_date := as.Date(join_date)  ]</code></pre>
 <p><br> Let’s begin by defining binary variable quit and fitting a linear model <br></p>
-<pre class="r"><code>## retention$quit &lt;- with(retention, ifelse(!is.na(quit_date), 1, 0))
-## lm.quit &lt;- lm(quit ~ salary + factor(company_id) + factor(dept) + seniority, data = retention[quit == 1 | (quit == 0 &amp; join_date &lt; (as.Date(&quot;2015-12-13&quot;) - 60) )] )
-## summary(lm.quit)</code></pre>
+<pre class="r"><code>retention$quit &lt;- with(retention, ifelse(!is.na(quit_date), 1, 0))
+lm.quit &lt;- lm(quit ~ salary + factor(company_id) + factor(dept) + seniority, data = retention[quit == 1 | (quit == 0 &amp; join_date &lt; (as.Date(&quot;2015-12-13&quot;) - 60))] )
+summary(lm.quit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = quit ~ salary + factor(company_id) + factor(dept) + 
+##     seniority, data = retention[quit == 1 | (quit == 0 &amp; join_date &lt; 
+##     (as.Date(&quot;2015-12-13&quot;) - 60))])
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.7685 -0.5639  0.4033  0.4321  0.5540 
+## 
+## Coefficients:
+##                            Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)               5.768e-01  9.109e-03  63.326  &lt; 2e-16 ***
+## salary                   -3.988e-07  9.530e-08  -4.185 2.86e-05 ***
+## factor(company_id)2      -2.056e-02  9.474e-03  -2.170 0.029985 *  
+## factor(company_id)3       3.278e-03  1.142e-02   0.287 0.773977    
+## factor(company_id)4       3.288e-03  1.264e-02   0.260 0.794733    
+## factor(company_id)5       5.573e-03  1.352e-02   0.412 0.680260    
+## factor(company_id)6      -2.388e-03  1.531e-02  -0.156 0.876049    
+## factor(company_id)7       1.221e-02  1.563e-02   0.781 0.434761    
+## factor(company_id)8      -6.917e-04  1.673e-02  -0.041 0.967027    
+## factor(company_id)9       6.664e-04  1.740e-02   0.038 0.969441    
+## factor(company_id)10      3.704e-04  1.818e-02   0.020 0.983751    
+## factor(company_id)11      1.769e-01  1.240e-01   1.426 0.153776    
+## factor(company_id)12     -8.199e-02  1.014e-01  -0.809 0.418648    
+## factor(dept)data_science  1.864e-02  1.571e-02   1.187 0.235354    
+## factor(dept)design        2.940e-02  1.543e-02   1.905 0.056731 .  
+## factor(dept)engineer      4.806e-03  1.483e-02   0.324 0.745985    
+## factor(dept)marketing     3.111e-02  1.159e-02   2.683 0.007296 ** 
+## factor(dept)sales         3.664e-02  1.160e-02   3.160 0.001580 ** 
+## seniority                 2.223e-03  6.376e-04   3.486 0.000491 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.4951 on 23902 degrees of freedom
+## Multiple R-squared:  0.003451,   Adjusted R-squared:  0.0027 
+## F-statistic: 4.598 on 18 and 23902 DF,  p-value: 2.931e-10</code></pre>
 <p><br> 1. People with higher salaries are less likely to quit. They might be quite happy with what they are making in the present company they don’t feel the need to quit. 2. The more experience one has had, the more likely they quit. However, seniority may be linked with salary. Exclude seniority of 98, 99 years - doesn’t make sense. Relationship between seniority and salary can be seen in the plot below.</p>
 <pre class="r"><code>salary_senior &lt;- retention[seniority &lt; 98 , .(mean(salary)), by = seniority ][order(seniority)]
 plot(salary_senior$seniority, salary_senior$V1, xlab = &quot;Seniority&quot;, ylab = &quot;Salary&quot;)</code></pre>
@@ -168,7 +205,7 @@ tree2 <- rpart(quit ~ salary + factor(company_id) + factor(dept) + seniority, da
 rpart.plot(tree2, uniform = TRUE)
 ```
 
-<img src="/Users/savita/Documents/savitaramaprasad.github.io/projects/ch3_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="/Users/savita/Documents/savita-ramaprasad.github.io/projects/ch3_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 [quit == 1 | (quit == 0 & join_date < (as.Date("2015-12-13") - 60))]
 
 Increasing the depth shows people with good salary (greater than 246000) and people with low salary (< 61500) are less likely to quit. Therefore giving us more information than a linear model. People with lower salaries might want to gain more experience (since they tend to have lower experience) which will help them command a higher salary in future. People with lower salaries may also be getting as many offers from other companies. There is however no outside company information in this data set, so will not be able to explore that. 
