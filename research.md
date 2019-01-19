@@ -4,12 +4,9 @@ title: Research
 permalink: /research/
 ---
 
-#### Effect of Ridesharing on Alcohol Related Motor Vehicle Crashes: The case of Uber/Lyft in Chicago
+#### [Ride-share and motor-vehicle crashes]({{ site.baseurl }}{%link research/ride-share-and-motor-vehicle-crashes.pdf %})  
 
-This paper investigates the effect of ride-sharing services like Uber/Lyft on alcohol-related motor vehicle crashes using crash data from 2006 to 2015 from the Illinois Department of Transportation (IDOT) [^1]. The data set has detailed information on the crash including the coordinates of the crash, weather conditions at time of crash and the reasons for the crash. 
+Abstract: Expansion of ridesharing technology in US cities is changing the way people travel from place to place. Using city-level data in Illinois from 2006 through 2016, this paper investigates whether the introduction of ridesharing services is associated with changes in various measures of motor vehicle crashes. I find that rideshare entry is associated with a decrease of 0.063 in nighttime fatal crash rate.  
 
-[^1]: I thank Illinois Department of Transportation for providing access to crash data
 
-[Preliminary Visualization]({{ site.baseurl }}{%link research/preliminary_visualization.html %})  
  
-Remaining analyses will be covered in future posts! 
