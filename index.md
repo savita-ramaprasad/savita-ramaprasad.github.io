@@ -4,7 +4,7 @@ title: About
 ---
 
 # Hi! I'm Savita  
-I am a PhD in Econometrics (expected Spring 2019) actively looking for data science positions in the San Francisco Bay Area.  
+I am a PhD in Econometrics actively looking for data science positions in the San Francisco Bay Area.  
 
 Here's my [resume]({{ site.baseurl }}/resume_savita.pdf). You can also find me on [LinkedIn](https://www.linkedin.com/in/savitaramaprasad/) and [Github](https://github.com/savita-ramaprasad/). 
 <!-- You can email at [first-name].tungu@gmail.com. -->
@@ -16,4 +16,4 @@ quasi-experiments on various social outcomes. You can read more [here]({{ site.b
 
 I received my undergraduate degree from [IIT Kanpur](http://www.iitk.ac.in/).
 
-I have worked on a bunch of data science projects. You can read more [here]({{ site.baseurl }}{%link projects.md %}) and take a look at the code [here](https://github.com/savita-ramaprasad/data-science-challenges).
+I have worked on a bunch of data science projects. You can read more [here]({{ site.baseurl }}{link projects.md }) and take a look at the code [here](https://github.com/savita-ramaprasad/data-science-challenges).
