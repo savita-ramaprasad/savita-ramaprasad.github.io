@@ -16,4 +16,4 @@ quasi-experiments on various social outcomes. You can read more [here]({{ site.b
 
 I received my undergraduate degree from [IIT Kanpur](http://www.iitk.ac.in/).
 
-I have worked on a bunch of data science projects. You can read more [here]({{ site.baseurl }}{link projects.md }) and take a look at the code [here](https://github.com/savita-ramaprasad/data-science-challenges).
+I have worked on a bunch of data science projects. You can read more [here]({{ site.baseurl }}%{link projects.md %}) and take a look at the code [here](https://github.com/savita-ramaprasad/data-science-challenges).
